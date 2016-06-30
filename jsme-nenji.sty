@@ -1,0 +1,174 @@
+%%
+%% This is file `jsme-nenji.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% jsme-nenji.dtx  (with options: `package')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from jsme-nenji.sty.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file jsme-nenji.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{jsme-nenji}[2010/09/30 makita]
+
+
+
+
+%% %<*package>
+%% \onecolumn
+%% % \columnsep 8truemm
+%% \textheight 247truemm
+%% \textwidth 170truemm
+%% \topmargin -1in
+%% \addtolength{\topmargin}{25truemm}
+%% \headheight 7truemm
+%% \headsep 0mm
+%% \oddsidemargin -1in
+%% \addtolength{\oddsidemargin}{20truemm}
+%% \marginparsep 0mm
+%% \marginparwidth 0mm
+%% \footskip 0mm
+%% %</package>
+
+\RequirePackage{fancyhdr}
+\RequirePackage{geometry}
+\RequirePackage{cite}
+\RequirePackage{caption3}
+
+\geometry{a4paper, onecolumn, top=26mm, bottom=25mm, left=21mm, right=21mm, headheight=21pt, headsep=0mm, }
+
+\captionsetup[figure]{name=Fig.~}
+\captionsetup[table]{name=Table~}
+
+\rhead{\footnotesize \sffamily 日本機械学会2016年度年次大会 [2016.9.11－14] \\
+Copyright \copyright 2016　一般社団法人　日本機械学会
+}
+\lfoot{\footnotesize \sffamily [No.16-1]　日本機械学会2016年度年次大会講演論文集 〔2016.9.11－14，福岡〕}
+
+
+\renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width \columnwidth
+  \kern 2.6pt}
+\renewcommand{\@fnsymbol}[1]{*\@arabic{#1}}
+\newcommand{\email}[1]{\footnote[0]{Email: {#1}}}
+
+
+\def\pnum#1{\gdef\@pnum{#1}}
+\def\engtitle#1{\gdef\@engtitle{#1}}
+\def\engauthor#1{\gdef\@engauthor{#1}}
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\def\address#1{\gdef\@address{#1}}
+\def\keyword#1{\gdef\@keyword{#1}}
+
+\def\@maketitle{\newpage%
+  \null%
+  \begin{flushleft}
+    \vspace*{-10mm} % added for pLaTeX
+    {\LARGE \sf \@pnum \par }
+  \end{flushleft}
+  \begin{center} %
+    %   \vspace*{5mm} % added for pLaTeX
+            {\Large\bf \@title \par } %
+  \end{center}
+  \begin{flushright}
+           {\large \@author }
+  \end{flushright}%
+  \begin{center}
+            {\large\bf \@engtitle \par } %
+            \vskip 1em
+            {\large \@engauthor \par } %
+            \vskip 1em
+            {\normalsize $^{*1}$ \@affiliation \par } %
+            {\normalsize \@address \par } %
+  \end{center}
+
+  \@ifundefined{@abstract}{}{%
+    \vspace*{0.0mm} % added for pLaTeX
+    \vskip 1em
+    \@abstract%
+    \gdef\@abstract{}}%
+
+  %   \vspace*{0.0mm} % added for pLaTeX
+  %   \vspace*{-4.0mm} % added for pLaTeX
+  \@ifundefined{@keyword}{}{%
+    {\em \bfseries Key Words: }\@keyword%
+    \gdef\@keyword{}}%
+  % %   \vspace*{5.0mm} % added for pLaTeX
+    \vspace*{0.0mm} % added for pLaTeX
+     \vskip 2zh}%
+ \long\def\abstract#1{\long\gdef\@abstract{#1}
+\vskip 1ex
+}%
+
+\def\thesection{\normalsize \arabic{section}.}
+\def\thesubsection{\normalsize \arabic{section}$\cdot$\arabic{subsection}}
+\def\thesubsubsection{\normalsize \arabic{section}$\cdot$\arabic{subsection}$\cdot$\arabic{subsubsection}}
+\def\section{\vskip 1ex \@startsection {section}{1}{\z@}{.8ex plus .5ex minus
+ .2ex}{.5ex plus .2ex}{\normalsize\bfseries\centering}}
+\def\subsection{\vskip 1ex \@startsection{subsection}{2}{\z@}{.1ex plus .5ex minus
+ .2ex}{.5ex plus .2ex}{\normalsize\bfseries}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{.1ex plus
+.5ex minus .2ex}{.5ex plus .2ex}{\normalsize\bfseries}}
+
+\def\thebibliography#1{% 参考文献出力命令
+  \vskip 1ex
+  \vskip 1zh plus .2ex minus .2ex
+  \centering{\normalsize\bfseries 文献}\par\@mkboth{References}{References}
+  \list{(\arabic{enumi})~} % ラベルは 1. , 2. , ...
+    {\settowidth\labelwidth{#1)} % ラベルの幅は [引数]
+     \leftmargin\labelwidth % 左余白はラベル幅
+     \parsep \z@ plus 1pt minus 1pt
+     \itemsep \z@ plus 1pt minus 1pt
+     \advance \leftmargin by \labelsep % 左余白を \labelsep だけ増す
+     \usecounter{enumi}} % enumi カウンタで文献番号を数える
+  \def\newblock{\hskip .11em plus .33em minus .07em}%
+   % \newblock は若干の空きをあける命令
+  \sloppy % 段落は多少空きが不揃いでもよい
+  \clubpenalty=4000 \widowpenalty=4000 % なるべく段落中の１行だけ別ページにならないように
+  \sfcode`\.=1000\relax} % 上の解説参照
+\let\endthebibliography=\endlist % 終わりは list の終わりと同じ
+\def\@cite#1#2{[{#1\if@tempswa , #2\fi}]}
+
+\renewcommand{\figurename}{表}
+
+\renewcommand{\tablename}{図}
+
+\newcommand{\eqjref}[1]{式\eqref{#1}}
+
+\newenvironment{env}%
+ {\begin{quote}\textbf}%
+ {\end{quote}}
+
+\newcounter{stepnumber}
+
+\newenvironment{steps}{%
+  \begin{list}{\bf Step~\arabic{stepnumber}.}{%
+    \usecounter{stepnumber}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\labelwidth}{0pt}%
+    \setlength{\leftmargin}{10pt}%
+   }}
+  {\end{list}}
+
+\thispagestyle{fancy}
+\pagestyle{empty}
+
+\endinput
+%%
+%% End of file `jsme-nenji.sty'.
