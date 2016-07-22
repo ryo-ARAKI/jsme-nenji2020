@@ -9,12 +9,12 @@
 \lhead{} % 何も記入しない
 \cfoot{} % 何も記入しない
 				     
-\makeatletter
-\DeclareRobustCommand\cite{\unskip
-\@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
- \def\@cite#1#2{$^{\hbox{\scriptsize{#1\if@tempswa , #2\fi})}}$}
- \def\@biblabel#1{#1)}
- \makeatother
+% \makeatletter
+% \DeclareRobustCommand\cite{\unskip
+% \@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+%  \def\@cite#1#2{$^{\hbox{(\scriptsize{#1\if@tempswa , #2\fi})}}$}
+%  \def\@biblabel#1{#1)}
+%  \makeatother
 
 \begin{document}
 
@@ -164,7 +164,8 @@ keywords.)} % キーワード
 \section{図及び写真・表の作成に関して}
 
 \begin{enumerate}[(1)]
- \item 本文中では，図1，表1のように日本語で書く．写真は，図として扱う．
+ \item 本文中では，\figurename 1，\tablename 1のように日本語で書く．写真
+       は，図として扱う．
        カラーで掲載できる．
  \item 番号・説明などは，図についてはその下に，表についてはその上に書く．
  \item 本文と，図・表の間は1行以上の空白を空けて，見やすくする．
@@ -178,7 +179,7 @@ keywords.)} % キーワード
 
 \section{数式の書き方}
 
-文章と同じ行中にある式の書き方は，表3の例に従う．ただし，別行に示す式の
+文章と同じ行中にある式の書き方は，\tablename 3の例に従う．ただし，別行に示す式の
 場合はこの限りでない．また，カッコの使い方は式の例に従う．
 
   \begin{table}[!hb]

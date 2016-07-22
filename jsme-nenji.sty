@@ -45,12 +45,16 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{geometry}
 \RequirePackage{cite}
-\RequirePackage{caption3}
+\RequirePackage{caption}
 
 \geometry{a4paper, onecolumn, top=26mm, bottom=25mm, left=21mm, right=21mm, headheight=21pt, headsep=0mm, }
 
 \captionsetup[figure]{name=Fig.~}
 \captionsetup[table]{name=Table~}
+
+
+
+\newcommand{\eqjref}[1]{式\eqref{#1}}
 
 \rhead{\footnotesize \sffamily 日本機械学会2016年度年次大会 [2016.9.11－14] \\
 Copyright \copyright 2016　一般社団法人　日本機械学会
@@ -127,7 +131,7 @@ Copyright \copyright 2016　一般社団法人　日本機械学会
 \def\thebibliography#1{% 参考文献出力命令
   \vskip 1ex
   \vskip 1zh plus .2ex minus .2ex
-  \centering{\normalsize\bfseries 文献}\par\@mkboth{References}{References}
+  \centering{\normalsize\bfseries 文　献}\par\@mkboth{References}{References}
   \list{(\arabic{enumi})~} % ラベルは 1. , 2. , ...
     {\settowidth\labelwidth{#1)} % ラベルの幅は [引数]
      \leftmargin\labelwidth % 左余白はラベル幅
@@ -141,13 +145,13 @@ Copyright \copyright 2016　一般社団法人　日本機械学会
   \clubpenalty=4000 \widowpenalty=4000 % なるべく段落中の１行だけ別ページにならないように
   \sfcode`\.=1000\relax} % 上の解説参照
 \let\endthebibliography=\endlist % 終わりは list の終わりと同じ
-\def\@cite#1#2{[{#1\if@tempswa , #2\fi}]}
 
-\renewcommand{\figurename}{表}
-
-\renewcommand{\tablename}{図}
-
-\newcommand{\eqjref}[1]{式\eqref{#1}}
+\makeatletter
+\DeclareRobustCommand\cite{\unskip
+  \@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+  \def\@cite#1#2{$^{\hbox{\scriptsize{(#1\if@tempswa , #2\fi)}}}$}
+  \def\@biblabel#1{(#1)}
+  \makeatother
 
 \newenvironment{env}%
  {\begin{quote}\textbf}%
