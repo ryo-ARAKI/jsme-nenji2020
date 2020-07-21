@@ -74,7 +74,6 @@
 \def\engtitle#1{\gdef\@engtitle{#1}}
 \def\engauthor#1{\gdef\@engauthor{#1}}
 \def\affiliation#1{\gdef\@affiliation{#1}}
-\def\address#1{\gdef\@address{#1}}
 \def\keyword#1{\gdef\@keyword{#1}}
 
 \def\@maketitle{\newpage%
@@ -87,16 +86,13 @@
     %   \vspace*{5mm} % added for pLaTeX
             {\Large\bf \@title \par } %
   \end{center}
-  \begin{flushright}
-           {\large \@author }
-  \end{flushright}%
   \begin{center}
             {\large\bf \@engtitle \par } %
-            \vskip 1em
+            {\large \@author \par }  %
+            % \vskip 1em
             {\large \@engauthor \par } %
-            \vskip 1em
-            {\normalsize $^{*1}$ \@affiliation \par } %
-            {\normalsize \@address \par } %
+            % \vskip 1em
+            {\normalsize \@affiliation \par } %
   \end{center}
 
   \@ifundefined{@abstract}{}{%
