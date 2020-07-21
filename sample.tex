@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt, dvips, fleqn]{jsarticle}
+\documentclass[a4paper, 10pt, dvips, fleqn, uplatex]{jsarticle}
 
 \usepackage{jsme-nenji}
 \usepackage{type1cm, newtxtext}
@@ -6,9 +6,30 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 
+\usepackage[sorting=none,url=false,isbn=false,doi=false]{biblatex}
+\renewbibmacro{in:}{} % in: Some journal の "in:" を取る
+\addbibresource{./bib_sample.bib}
+
+% \supercite コマンドを(1)のように修正
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+{
+  \iffieldundef{prenote}
+  {}
+  {\BibliographyWarning{Ignoring prenote argument}}%
+  \iffieldundef{postnote}
+  {}
+  {\BibliographyWarning{Ignoring postnote argument}}
+}
+{
+  \usebibmacro{citeindex}%
+  (\usebibmacro{cite})
+}
+{\supercitedelim}
+{}
+
 \lhead{} % 何も記入しない
 \cfoot{} % 何も記入しない
-				     
+
 % \makeatletter
 % \DeclareRobustCommand\cite{\unskip
 % \@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
@@ -25,370 +46,242 @@
 \engtitle{Making Research Paper\\
 (About the Use of the JSME Specification Template File)
 } % English Title
-\author{機械 太郎\thanks{正員，日本機械大学（〒160-0016　東京都新宿区信
-濃町35）}，
-技術 さくら\thanks{学生員，日本機械大学 工学部}}
- % 氏名\thanks{所属}
-\engauthor{Taroh KIKAI$^{*1}$ and Sakura GIJYUTSU} % English name(s)
-\affiliation{Nihon Kikai Univ. Dept. of Mechanical Engineering
+\author{
+  機械 太郎\(^{\ast 1}\)，
+  \(\bigcirc\)正~ 技術 さくら\(^{\ast 2}\)，\\
+  機械 二郎\(^{\ast 1}\)，機械 三郎\(^{\ast 1}\)，東京 花子\(^{\ast 3}\)，
+}  % 氏名
+\engauthor{
+  Taroh KIKAI\(^{\ast 1}\),
+  Sakura GIJYUTSU\(^{\ast 2}\),\\
+  Jiroh KIKAI\(^{\ast 1}\), Saburoh KIKAI\(^{\ast 1}\) and Hanako TOKYO\(^{\ast 3}\)
+} % English name(s)
+\affiliation{
+  \(^{\ast 1}\)日本機械大学　Nihon Kikai University\\
+  \(^{\ast 2}\)信濃町大学　Shinanomachi University\\
+  \(^{\ast 3}\)機械株式会社　Kikai Corporation
 } % 筆頭著者の所属の英語表記
 
-\address{Shinanomachi 35, Shinjyuku-ku, Tokyo, 160-0016 Japan}
-% 筆頭著者の所属の住所
+\abstract{
+  When preparing the manuscript, read and observe carefully this sample as well as the instruction manual for the manuscript of the Transaction of Japan Society of Mechanical Engineers.
+  This sample was prepared using MS-word.
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+  --------------------------------------------------------------
+} % アブストラクト
 
-\abstract{When preparing the manuscript, read and observe carefully this
-sample as well as the instruction manual for the manuscript of the
-Transaction of Japan Society of Mechanical Engineers. This sample was
-prepared using
-MS-word.--------------------------------------------------------------
------------------------------------------------------------------------
------------------------------------------------------------------------
--------------------------------------------------------------------------
-----------------------------------------------------------------------
--------------------------------------------------------------------------
---------------------------------------------------------------------
------------------------------------------------------------------------
------------------------------------------------------------------------
------------------------------------------------------------------------}
-% アブストラクト
-\keyword{Keyword1, Keyword2, Keyword3, Keyword4,…(Show five to ten
-keywords.)} % キーワード
+\keyword{
+  Keyword1, Keyword2, Keyword3, Keyword4,…(Show five to ten keywords.)
+} % キーワード
+
 
 \maketitle
 
-\email{taro@jsme.or.jp} % 筆頭著者の E-mail アドレス
 
+\section{諸　　　言}
 
- \section{諸言}
+このテンプレートファイルは，日本機械学会論文集執筆要綱にのっとり原稿体裁を整えて投稿することができるようにスタイルファイルとして，フォントサイズなどの書式を設定し，登録している．
+1行の文字数，1ページの行数など定められた形式で作成することができる．
 
-このテンプレートファイルは，日本機械学会論文集執筆要綱にのっとり原稿体裁
-を整えて投稿することができるようにスタイルファイルとして，フォントサイズ
-などの書式を設定し，登録している．1行の文字数，1ページの行数など定められ
-た形式で作成することができる． 
+本文の文字数は，1ページ当たり，50文字×46行×1段組で2300字とする．
+また，文章の区切りには全角の読点「，」（カンマ）と句点「．」（ピリオド）を用いる．カッコも全角入力する．
 
-本文の文字数は，1ページ当たり，50文字×46行×1段組で2300字とする．また，
-文章の区切りには全角の読点「，」（カンマ）と句点「．」（ピリオド）を用い
-る．カッコも全角入力する． 
+本文中の文字の書式は，明朝体・Serif系（Century，Times New Romanなど）を利用し，章節項については，ゴシックを使用する．
+文字の大きさ及びフォントの詳細を確認する場合は，執筆要綱C.執筆要綱3・10節を参照する．
 
-本文中の文字の書式は，明朝体・Serif系（Century，Times New Romanなど）を
-利用し，章節項については，ゴシック体を使用する．文字の大きさ及びフォント
-の詳細を確認する場合は，執筆要綱C.執筆要綱3・10節を参照する． 
-
-2015年度年次大会講演論文原稿では，PDF化した提出原稿のファイルサイズを，
-１ファイルあたり2 MB以下とします． 
+2020年度年次大会講演論文原稿では，PDF化した提出原稿のファイルサイズを，１ファイルあたり2 MB以下とします．
 
 
 \section{このテンプレートファイルの使い方}
 
-このテンプレートの表題（副題），著者名，本文などはあらかじめ本会指定のフォ
-ントサイズなどの書式が設定されている．この書式を崩さずに入力すれば，文字
-数，行数など定められた体裁で論文を作成することができる．しかし，絶対的な
-出来上がりのレベルを保証するものではないので，体裁が望むレベルに達しない
-場合には，使用の環境に合わせ，投稿者各自において微調整を行うなど，本会の
-論文集掲載の体裁に最も近い設定を行う必要がある．
-
-なお，書式を崩してしまった場合は，段落内にカーソルを置き，［書式設定］ツー
-ルバーの「スタイル」ボックスで，指定したいスタイルをクリックすると体裁を
-容易に整えることができる．
+このテンプレートの表題（副題），著者名，本文などはあらかじめ本会指定のフォントサイズなどの書式が設定されている．
+この書式を崩さずに入力すれば，文字数，行数など定められた体裁で論文を作成することができる．
 
 
 \section{原稿執筆の手引き}
 
 \subsection{原稿の規定ページ数について}
 
-2015年度年次大会講演論文原稿のページ数は，2～3ページを標準とするが，最大
-で5ページまで可とする．なお，原稿中にページ番号は不要である．  
+2020年度年次大会講演論文原稿のページ数は，2～3ページを標準とするが，最大で5ページまで可とする．
+原稿中にページ番号は不要である．
+
 
 \subsection{原稿の作成に際して}
 
-原稿の冒頭には，和文の表題・副題，著者名，英文の表題・副題，ローマ字著者
-名，ローマ字連絡先所属機関を入れる． 
+原稿の冒頭には，和文の表題・副題，著者名，英文の表題・副題，ローマ字著者名，ローマ字連絡先所属機関を入れる．
+
 
 \subsection{表題及び副題の付け方}
 
-原稿の表題は内容を明確に表現するもので，しかも簡潔なものが望まれる．また，
-必要に応じて副題を付けてもよいが，第1報，第2報という表現は極力避けるよう
-にする． 
+原稿の表題は内容を明確に表現するもので，しかも簡潔なものが望まれる．
+また，必要に応じて副題を付けてもよいが，第1報，第2報という表現は極力避けるようにする．
+
 
 \subsection{英文抄録の書き方}
 
-長さは150～250語程度で，途中で改行をしないで，本文と切り離してそれだけを
-読んでも，論文の内容が具体的に分かるように研究対象，研究方法・装置，結果
-について書く．また，本文中の図・表・文献は，引用しない．式を書く必要があ
-る場合は，式の番号を引用せずに，式をそのまま書く． 
+長さは150～250語程度で，途中で改行をしないで，本文と切り離してそれだけを読んでも，論文の内容が具体的に分かるように研究対象，研究方法・装置，結果について書く．
+また，本文中の図・表・文献は，引用しない．式を書く必要がある場合は，式の番号を引用せずに，式をそのまま書く．
+
 
 \subsection{キーワードの付け方}
 
-キーワードは，論文の内容を代表する重要な用語である．これによって論文の分類，検索が迅速になる．キー
-ワードは，本文を執筆した後に書くのが望ましい．
+キーワードは，論文の内容を代表する重要な用語である．
+これによって論文の分類，検索が迅速になる．
+キーワードは，本文を執筆した後に書くのが望ましい．
 \begin{enumerate}[(1)]
- \item キーワードは，5～10 語句とする．
- \item キーワードは，英文抄録の直下に英語で記載する．キーワードにはハイフンは使用せず（ハイフンを使用
+  \item キーワードは，5～10 語句とする．
+  \item キーワードは，英文抄録の直下に英語で記載する．キーワードにはハイフンは使用せず（ハイフンを使用
 してひとつの言葉として一般に認識されるものを除く），前置詞・冠詞も含めない．
 \end{enumerate}
 
-\subsection{脚注の書き方}
-
-原稿用紙1ページ下に本文との間に線を入れ，著者全員の会員資格，著者の所属
-機関名，所属機関所在地，代表著者1名のE-mailアドレスを書く．著者の所属機
-関名については，当該研究が行われた時点での所属機関名・部署名等を記載する．
-研究を行った後に著者の所属機関に変更があった場合は，投稿時の機関名を記入
-し，現所属についてはカッコ書きにて（現○○）のように，必要に応じて記載す
-ることもできる． 
 
 \subsection{見出し（章，節，項）の付け方及び書き方}
 
-本文は適当に区分して，見出しを付ける．体裁としては，章は2行分をとって，
-行の中ほどに書く．また，節・項は行の左端より1文字あけて書き，改行して本
-文を記載する．ただし節の後に項がくるときは改行する．書体はゴシック体とす
-る． 
+本文は適当に区分して，見出しを付ける．
+体裁としては，章は2行分をとって，行の中ほどに書く．
+また，節・項は行の左端より1文字あけて書き，改行して本文を記載する．
+ただし節の後に項がくるときは改行する．
+書体はゴシック体とする．
+
 
 \subsection{量記号・単位記号の書き方}
 
-量記号はイタリック体，単位記号はローマン体とする．無次元数はイタリック体
-で書く．
+量記号はイタリック体，単位記号はローマン体とする．
+無次元数はイタリック体で書く．
+
 
 \subsection{用いる単位について}
 
-単位は，SI単位を使用する．数学記号・単位記号及び量記号は，半角英数字を使
-用する．なお，SI単位については，本会発行の「機械工学SIマニュアル」及び
-「JISZ8203 国際単位系（SI）及びその使い方」を参照する． 
+単位は，SI単位を使用する．
+数学記号・単位記号及び量記号は，半角英数字を使用する．
+なお，SI単位については，本会発行の「機械工学SIマニュアル」及び「JISZ8203 国際単位系（SI）及びその使い方」を参照する．
+
 
 \subsection{用いる記号}
 
-数学記号は，JISZ8201に従う．また，量を表す文字記号（量記号）は，JISZ8202
-に従う．なお，数字の書き方は，表2の例に従う．年度の表し方については，本
-年または昨年などとせず，かならず2007年のように西暦ではっきり記述する． 
+数学記号は，JISZ8201に従う．
+また，量を表す文字記号（量記号）は，JISZ8202に従う．
+なお，数字の書き方は，表2の例に従う．
+年度の表し方については，本年または昨年などとせず，かならず2007年のように西暦ではっきり記述する．
 
 
 \section{図及び写真・表の作成に関して}
 
 \begin{enumerate}[(1)]
- \item 本文中では，\figurename 1，\tablename 1のように日本語で書く．写真
-       は，図として扱う．
-       カラーで掲載できる．
- \item 番号・説明などは，図についてはその下に，表についてはその上に書く．
- \item 本文と，図・表の間は1行以上の空白を空けて，見やすくする．
- \item 図中・表中の説明及び題目はすべて英語で書く（最初の文字は大
-       文字とする）．書体としては，Serif系を利用し，9.5ポイントの
-       大きさで記載する．
-\item 図及び表の横に空白ができても，その空白部には本文を記入してはならな
-      い．
- \item 図及び表は，余白部分にはみ出してはならない．
+  \item 本文中では，図1，表1のように日本語で書く．写真は，図として扱う．カラーで掲載できる．
+  \item 番号・説明などは，図についてはその下に，表についてはその上に書く．
+  \item 本文と，図・表の間は1行以上の空白を空けて，見やすくする．
+  \item 図中・表中の説明及び題目はすべて英語で書く（最初の文字は大文字とする）．書体としては，Serif系を利用し，9.5ポイントの大きさで記載する．
+  \item 図及び表の横に空白ができても，その空白部には本文を記入してはならない．
+  \item 図及び表は，余白部分にはみ出してはならない．
 \end{enumerate}
 
 \section{数式の書き方}
 
-文章と同じ行中にある式の書き方は，\tablename 3の例に従う．ただし，別行に示す式の
-場合はこの限りでない．また，カッコの使い方は式の例に従う．
+文章と同じ行中にある式の書き方は，表3の例に従う．
+ただし，別行に示す式の場合はこの限りでない．
+また，カッコの使い方は式（1）の例に従う．
 
-  \begin{table}[!hb]
-   \begin{minipage}[c]{0.49\columnwidth}
+\begin{table}[!hbtp]
+  \begin{minipage}[c]{0.5\columnwidth}
     \centering
     \caption{Sample of expression of values}
     \begin{tabular}[t]{|c|c|}
-     \hline
-     Recommended & Not recommended \\ 
-     \hline
-     0.357 & .357 \\
-     \hline
-     3.141 6 & 3.141,6 \\
-     \hline
-     3.141 6×2.5 & 3.141 6 $\cdot$2.5 \\
-     \hline
+      \hline
+      Recommended & Not recommended \\
+      \hline
+      0.357 & .357 \\
+      \hline
+      3.141 6 & 3.141,6 \\
+      \hline
+      3.141 6×2.5 & 3.141 6 $\cdot$2.5 \\
+      \hline
     \end{tabular}
-   \end{minipage}
-   \begin{minipage}[c]{0.49\columnwidth}
-    \centering
-    \caption{Sample of root and division}
-    \begin{tabular}[t]{|c|c|}
-     \hline
-     Recommended & Not recommended\\
-     \hline
-      & $\sqrt{}$ \\
-     \hline
-      &  \\
-     \hline
-    \end{tabular}
-   \end{minipage}
-   \end{table}
-   \begin{table}[!hb]
-    \centering
-    \caption{Physical properties of air at atmospheric pressure}
-    \begin{tabular}[t]{|c|c|c|c|c|c|c|c|}
-     \hline
-     [$^{\circ}\mathrm{C}$] & [$\mathrm{kg/m^{3}}$] &
-	     [$\mathrm{J/(kg\cdot K)}$] & [$\mathrm{Pa\cdot s}$]
-		 & [$\mathrm{m^{2/s}}$] & [$\mathrm{W/(m\cdot K)}$]
-			 & [$\mathrm{m^{2}/s}$] & \\
-     \hline
-      & & $\times 10^{3}$ & $\times 10^{-5}$ & $\times 10^{-5}$ &
-			 $\times 10^{-2}$ 
-			 & $\times 10^{-5}$ & \\
-     \hline
-     0 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     10 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     20 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     27 & 1.1763 & 1.007 & 1.862 & 1.583 & 2.614 & 2.207 & 0.717 \\
-     \hline
-     30 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     40 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     50 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     60 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     70 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     80 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     90 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-     100 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
-     \hline
-    \end{tabular}
-   \end{table}
+  \end{minipage}
+\end{table}
 
-   \begin{equation}
-    d \left\{ \sum{\frac{1}{2}mk}
-       \left[ \left( \frac{dxi}{dt} \right)^{2} + 
-        \left( \frac{dyi}{dt} \right)^{2} + 
-        \left( \frac{dzi}{dt} \right)^{2}
-       \right] \right\}
-    = \sum{\left( Xidxi + Yidyi + Zidzi \right)}
-    \label{eq1}
-   \end{equation}
-   
-式番号は，式と同じ行に右寄せして（ ）の中に書く．また，本文で式を引用す
-るときは，式\eqref{eq1}のように書く．式を書くときは，2文字分空白を空ける．
-また， 
-必要行数分を必ず使うようにして書く．3行必要とする式を2行につめて書いたり，
-2行に分かれる式を1行に収めたりしない．なお，本文と式，式相互間は1行以上
-の空白を空けて，見やすくする． 
+\begin{table}[!hbtp]
+  \centering
+  \caption{Physical properties of air at atmospheric pressure}
+  \begin{tabular}[t]{c|c|c|c|c|c|c|c}
+    \hline \hline
+    [$^{\circ}\mathrm{C}$] & [$\mathrm{kg/m^{3}}$] &
+      [$\mathrm{J/(kg\cdot K)}$] & [$\mathrm{Pa\cdot s}$]
+    & [$\mathrm{m^{2/s}}$] & [$\mathrm{W/(m\cdot K)}$]
+      & [$\mathrm{m^{2}/s}$] & \\
+    \hline
+    & & $\times 10^{3}$ & $\times 10^{-5}$ & $\times 10^{-5}$ &
+      $\times 10^{-2}$
+      & $\times 10^{-5}$ & \\
+    0 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    10 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    20 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    27 & 1.1763 & 1.007 & 1.862 & 1.583 & 2.614 & 2.207 & 0.717 \\
+    30 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    40 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    50 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    60 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    70 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    80 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    90 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    100 & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx & x.xxx \\
+    \hline
+  \end{tabular}
+\end{table}
 
-また，原則として数式エディタのポイント数は本文に準じるものとするが，添え
-字等が小さく読みにくくなるときは適宜拡大する． 
+\begin{equation}
+d \left\{ \sum{\frac{1}{2}mk}
+    \left[ \left( \frac{dxi}{dt} \right)^{2} +
+    \left( \frac{dyi}{dt} \right)^{2} +
+    \left( \frac{dzi}{dt} \right)^{2}
+    \right] \right\}
+= \sum{\left( Xidxi + Yidyi + Zidzi \right)}
+\label{eq1}
+\end{equation}
+
+式番号は，式と同じ行に右寄せして（ ）の中に書く．
+また，本文で式を引用するときは，式（1）のように書く．
+式を書くときは，2文字分空白を空ける．
+また，必要行数分を必ず使うようにして書く．
+3行必要とする式を2行につめて書いたり，2行に分かれる式を1行に収めたりしない．
+なお，本文と式，式相互間は1行以上の空白を空けて，見やすくする．
+
+また，原則として数式エディタのポイント数は本文に準じるものとするが，添え字等が小さく読みにくくなるときは適宜拡大する．
 
 \begin{gather}
- \bar{C}(t) = \frac{1}{N}\sum^{N}_{i=1}{C_{i}(t)} \\
- C_{th} = \frac{\displaystyle \sum^{N}_{i=1}{C(t)}}{\sqrt{\displaystyle \sum^{}_{i=0}{l_{0}-l_{i}}}}
- = \frac{b}{a}C_{0} \\
- W_{th} = Q_{1}\frac{\delta T_{0}}{T_{0} + \delta T_{0}}
- = Q_{2}\frac{2\delta T_{0}}{T_{0} + 2\delta T_{0}}
- = Q_{2}\frac{3\delta T_{0}}{T_{0} + 3\delta T_{0}}
- = GL_{0}\frac{\delta T_{0}}{T_{0}}\frac{T_{0} + \delta T_{0}}{T_{0}}
- \left\{ \alpha \ast -\frac{C_{p}\delta T_{0}}{L_{0}}
- \left( \frac{T_{0}}{T_{0} + \delta T_{0}} \right)^{2} \right\}
+  \bar{C}(t) = \frac{1}{N}\sum^{N}_{i=1}{C_{i}(t)} \\
+  C_{th} = \frac{\displaystyle \sum^{N}_{i=1}{C(t)}}{\sqrt{\displaystyle \sum^{}_{i=0}{l_{0}-l_{i}}}}
+  = \frac{b}{a}C_{0} \\
+  W_{th} = Q_{1}\frac{\Delta T_{0}}{T_{0} + \Delta T_{0}}
+  = Q_{2}\frac{2\Delta T_{0}}{T_{0} + 2\Delta T_{0}}
+  = Q_{2}\frac{3\Delta T_{0}}{T_{0} + 3\Delta T_{0}}
+  = GL_{0}\frac{\Delta T_{0}}{T_{0}}\frac{T_{0} + \Delta T_{0}}{T_{0}}
+  \left\{ \alpha \ast -\frac{C_{p}\Delta T_{0}}{L_{0}}
+  \left( \frac{T_{0}}{T_{0} + \Delta T_{0}} \right)^{2} \right\}
 \end{gather}
+
 
 \section{引用文献の書き方}
 
-本文中の引用箇所には，右肩に小括弧をつけて，通し番号を付ける．例えば，新
-宿・渋谷\cite{shinjuku,keer}のようにする．引用文献は，本文末尾に番号順に
-まとめて書く． 
-また，日本語の文献を引用する場合は日本語表記とし，英語の文献を引用する場
-合は英語表記とする．
-
-\section{結言}
-
-本テンプレートファイルのスタイルを利用すると，各々の項目の書式が自動的に
-利用できるので便利である． 
-
-\begin{thebibliography}{10}
-\bibitem{shinjuku}
-新宿太郎，渋谷二郎，
-``論文の書き方''，
-日本機械学会論文集A編，Vol.~52, No.~485 (1987), pp.~111--116.
-
-\bibitem{keer}
-Keer, L.M., Knapp, W., and Hocken, R., ``Resonance Effects for a
-Crack Near a Free Surface'', Transactions of the ASME, Journal
-of Applied Mechanics, Vol.~51, No.~1 (1986), pp.~65--69.
-	
-
-\end{thebibliography}
-
-\newpage
-
-\appendix
-
- \section{式の参照}
-
-\begin{equation}
-F = ma
-\label{eq:newton}
-\end{equation}
-
-\verb|\label{hoge}|のように式にラベルをつけておくと，\verb|\eqref{hoge}|
-のように参照することで式番号が自動的に入ります．この番号は式の順番に
-つけられるので，式が入れ替わったり，数が変わったりしてもいちいち手動で
-書き換える必要はありません．
-\eqjref{eq:newton}のように出力する場合には，
-\verb|\eqjref{hoge}|のようにすればよいコマンドを用意しています．
-
-\section{steps環境の使い方[\date{2010/10/14}]}
-
-実験手順等を書き表すときに使うsteps環境を用意しました．
-\begin{steps}
-\item \verb|\begin{steps}|で始める．
-\item \verb|\item|を追加していく．
-\item \verb|\end{steps}|で終わる．
-\end{steps}
+本文中の引用箇所には，右肩に小括弧をつけて，通し番号を付ける．
+例えば，新宿・渋谷\supercite{shinjuku,keer}のようにする．
+引用文献は，本文末尾に番号順にまとめて書く．
+また，日本語の文献を引用する場合は日本語表記とし，英語の文献を引用する場合は英語表記とする．
 
 
-図・表の場合も同様に，ラベルをつけると図番号が自動的に挿入されます．
-\verb|\ref{hogehoge}|のように参照することで，本文中でも図番号を
-参照することができます．\verb|\figurename, \tablename|はそれぞれ，
-図，表と出力するように定義されたマクロ（命令）です．
+\section{結　　　言}
 
-\textbf{なお，論文中の図・表は必ず本文中で参照しなければなりません．}
-
-また，図はベクター形式である EPS（Encapsulated Post Script）を使用します
-が．最近ではPDF形式が主流なようです．
+本テンプレートファイルのスタイルを利用すると，各々の項目の書式が自動的に利用できるので便利である．
 
 
-\section{\LaTeX による PDF ファイルの作りかた}
-
-印刷には PDF（Portable Document Format）を使用するのがよいでしょう．
-\LaTeX による PDF の作り方は2通りあります（実際は，もっとあります）．
-
-\begin{itemize}
-
-\item dvipdfmx を使う方法
-
-\item dvips で PS（Post Script）ファイルを作ってから，Adobe Acrobat
-Distillerを使う方法
-
-\end{itemize}
-
-ここでは，\LaTeX 標準の dvipdfmx を使う方法を紹介します．
-
-\subsection{dvipdfmx による PDF 作成方法}
-
-WinShell を使用している場合，プログラムの登録をしますが，このとき，オプ
-ションを以下のようにします．
-
-\begin{quote}
- (dvipdfmx) -f noembed.map \%s
-\end{quote}
-
-``-f noembeded.map''というのは，日本語フォントなどを埋め込まないようにす
-る設定です．
-``-f dlbase14.map'' というのは，標準では埋め込まれないフォント（Times 系）
-を埋め込むためのオプションです．
-通常，PDF はどのコンピュータでも同じ体裁で開けるようフォントを埋め込みま
-す．これがされていないと，コンピュータによって異なるフォントで開かれるた
-め，印刷などで体裁が崩れる，または文字化け等を引き起こす可能性があります．
-Adobe Reader などで PDF を開きファイルのプロパティを見ると，フォント名の
-横に（埋め込みサブセット）などど書いてあるものがあります．このような
-フォントは PDF への埋め込みがされていますが，特に書かれていないものは，
-埋め込みがされていません．通常，日本語フォントは非常にファイルサイズが
-重たくなるため，多くの場合，埋め込みがされません．
-
-
+\printbibliography[title=文　　　献]
 
 \end{document}

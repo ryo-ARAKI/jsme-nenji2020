@@ -5,17 +5,17 @@
 %% The original source files were:
 %%
 %% jsme-nenji.dtx  (with options: `package')
-%% 
+%%
 %% IMPORTANT NOTICE:
-%% 
+%%
 %% For the copyright see the source file.
-%% 
+%%
 %% Any modified versions of this file must be renamed
 %% with new filenames distinct from jsme-nenji.sty.
-%% 
+%%
 %% For distribution of the original source see the terms
 %% for copying and modification in the file jsme-nenji.dtx.
-%% 
+%%
 %% This generated file may be distributed as long as the
 %% original source files, as listed above, are part of the
 %% same distribution. (The sources need not necessarily be
@@ -44,7 +44,7 @@
 
 \RequirePackage{fancyhdr}
 \RequirePackage{geometry}
-\RequirePackage{cite}
+% \RequirePackage{cite}
 \RequirePackage{caption}
 
 \geometry{a4paper, onecolumn, top=26mm, bottom=25mm, left=21mm, right=21mm, headheight=21pt, headsep=0mm, }
@@ -54,12 +54,11 @@
 
 
 
-\newcommand{\eqjref}[1]{®\eqref{#1}}
+\newcommand{\eqjref}[1]{å¼\eqref{#1}}
 
-\rhead{\footnotesize \sffamily “ú–{‹@ŠBŠw‰ï2016”N“x”NŸ‘å‰ï [2016.9.11|14] \\
-Copyright \copyright 2016@ˆê”ÊĞ’c–@l@“ú–{‹@ŠBŠw‰ï
+\rhead{\footnotesize \sffamily Copyright \copyright 2020ã€€ä¸€èˆ¬ç¤¾å›£æ³•äººã€€æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š
 }
-\lfoot{\footnotesize \sffamily [No.16-1]@“ú–{‹@ŠBŠw‰ï2016”N“x”NŸ‘å‰ïu‰‰˜_•¶W k2016.9.11|14C•Ÿ‰ªl}
+\lfoot{\footnotesize \sffamily [No.20-1]ã€€æ—¥æœ¬æ©Ÿæ¢°å­¦ä¼š2020å¹´åº¦å¹´æ¬¡å¤§ä¼šè¬›æ¼”è«–æ–‡é›† ã€”2020.9.13-16ï¼Œåå¤å±‹ã€•}
 
 
 \renewcommand{\headrulewidth}{0mm}
@@ -75,7 +74,6 @@ Copyright \copyright 2016@ˆê”ÊĞ’c–@l@“ú–{‹@ŠBŠw‰ï
 \def\engtitle#1{\gdef\@engtitle{#1}}
 \def\engauthor#1{\gdef\@engauthor{#1}}
 \def\affiliation#1{\gdef\@affiliation{#1}}
-\def\address#1{\gdef\@address{#1}}
 \def\keyword#1{\gdef\@keyword{#1}}
 
 \def\@maketitle{\newpage%
@@ -88,16 +86,13 @@ Copyright \copyright 2016@ˆê”ÊĞ’c–@l@“ú–{‹@ŠBŠw‰ï
     %   \vspace*{5mm} % added for pLaTeX
             {\Large\bf \@title \par } %
   \end{center}
-  \begin{flushright}
-           {\large \@author }
-  \end{flushright}%
   \begin{center}
             {\large\bf \@engtitle \par } %
-            \vskip 1em
+            {\large \@author \par }  %
+            % \vskip 1em
             {\large \@engauthor \par } %
-            \vskip 1em
-            {\normalsize $^{*1}$ \@affiliation \par } %
-            {\normalsize \@address \par } %
+            % \vskip 1em
+            {\normalsize \@affiliation \par } %
   \end{center}
 
   \@ifundefined{@abstract}{}{%
@@ -127,31 +122,6 @@ Copyright \copyright 2016@ˆê”ÊĞ’c–@l@“ú–{‹@ŠBŠw‰ï
  .2ex}{.5ex plus .2ex}{\normalsize\bfseries}}
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{.1ex plus
 .5ex minus .2ex}{.5ex plus .2ex}{\normalsize\bfseries}}
-
-\def\thebibliography#1{% Ql•¶Œ£o—Í–½—ß
-  \vskip 1ex
-  \vskip 1zh plus .2ex minus .2ex
-  \centering{\normalsize\bfseries •¶@Œ£}\par\@mkboth{References}{References}
-  \list{(\arabic{enumi})~} % ƒ‰ƒxƒ‹‚Í 1. , 2. , ...
-    {\settowidth\labelwidth{#1)} % ƒ‰ƒxƒ‹‚Ì•‚Í [ˆø”]
-     \leftmargin\labelwidth % ¶—]”’‚Íƒ‰ƒxƒ‹•
-     \parsep \z@ plus 1pt minus 1pt
-     \itemsep \z@ plus 1pt minus 1pt
-     \advance \leftmargin by \labelsep % ¶—]”’‚ğ \labelsep ‚¾‚¯‘‚·
-     \usecounter{enumi}} % enumi ƒJƒEƒ“ƒ^‚Å•¶Œ£”Ô†‚ğ”‚¦‚é
-  \def\newblock{\hskip .11em plus .33em minus .07em}%
-   % \newblock ‚ÍáŠ±‚Ì‹ó‚«‚ğ‚ ‚¯‚é–½—ß
-  \sloppy % ’i—‚Í‘½­‹ó‚«‚ª•s‘µ‚¢‚Å‚à‚æ‚¢
-  \clubpenalty=4000 \widowpenalty=4000 % ‚È‚é‚×‚­’i—’†‚Ì‚Ps‚¾‚¯•Êƒy[ƒW‚É‚È‚ç‚È‚¢‚æ‚¤‚É
-  \sfcode`\.=1000\relax} % ã‚Ì‰ğàQÆ
-\let\endthebibliography=\endlist % I‚í‚è‚Í list ‚ÌI‚í‚è‚Æ“¯‚¶
-
-\makeatletter
-\DeclareRobustCommand\cite{\unskip
-  \@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
-  \def\@cite#1#2{$^{\hbox{\scriptsize{(#1\if@tempswa , #2\fi)}}}$}
-  \def\@biblabel#1{(#1)}
-  \makeatother
 
 \newenvironment{env}%
  {\begin{quote}\textbf}%
