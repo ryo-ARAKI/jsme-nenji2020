@@ -127,23 +127,23 @@
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{.1ex plus
 .5ex minus .2ex}{.5ex plus .2ex}{\normalsize\bfseries}}
 
-\def\thebibliography#1{% �Q�l�����o�͖���
+\def\thebibliography#1{% 参考文献出力命令
   \vskip 1ex
   \vskip 1zh plus .2ex minus .2ex
-  \centering{\normalsize\bfseries ���@��}\par\@mkboth{References}{References}
-  \list{(\arabic{enumi})~} % ���x���� 1. , 2. , ...
-    {\settowidth\labelwidth{#1)} % ���x���̕��� [����]
-     \leftmargin\labelwidth % ���]���̓��x����
+  \centering{\normalsize\bfseries 文　献}\par\@mkboth{References}{References}
+  \list{(\arabic{enumi})~} % ラベルは 1. , 2. , ...
+    {\settowidth\labelwidth{#1)} % ラベルの幅は [引数]
+     \leftmargin\labelwidth % 左余白はラベル幅
      \parsep \z@ plus 1pt minus 1pt
      \itemsep \z@ plus 1pt minus 1pt
-     \advance \leftmargin by \labelsep % ���]���� \labelsep ��������
-     \usecounter{enumi}} % enumi �J�E���^�ŕ����ԍ��𐔂���
+     \advance \leftmargin by \labelsep % 左余白を \labelsep だけ増す
+     \usecounter{enumi}} % enumi カウンタで文献番号を数える
   \def\newblock{\hskip .11em plus .33em minus .07em}%
-   % \newblock �͎኱�̋󂫂������閽��
-  \sloppy % �i���͑����󂫂��s�����ł��悢
-  \clubpenalty=4000 \widowpenalty=4000 % �Ȃ�ׂ��i�����̂P�s�����ʃy�[�W�ɂȂ�Ȃ��悤��
-  \sfcode`\.=1000\relax} % ��̉���Q��
-\let\endthebibliography=\endlist % �I���� list �̏I���Ɠ���
+   % \newblock は若干の空きをあける命令
+  \sloppy % 段落は多少空きが不揃いでもよい
+  \clubpenalty=4000 \widowpenalty=4000 % なるべく段落中の１行だけ別ページにならないように
+  \sfcode`\.=1000\relax} % 上の解説参照
+\let\endthebibliography=\endlist % 終わりは list の終わりと同じ
 
 \makeatletter
 \DeclareRobustCommand\cite{\unskip
