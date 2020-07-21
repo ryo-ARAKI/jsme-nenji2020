@@ -6,6 +6,27 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 
+\usepackage[sorting=none,url=false,isbn=false,doi=false]{biblatex}
+\renewbibmacro{in:}{} % in: Some journal の "in:" を取る
+\addbibresource{./bib_sample.bib}
+
+% \supercite コマンドを(1)のように修正
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+{
+  \iffieldundef{prenote}
+  {}
+  {\BibliographyWarning{Ignoring prenote argument}}%
+  \iffieldundef{postnote}
+  {}
+  {\BibliographyWarning{Ignoring postnote argument}}
+}
+{
+  \usebibmacro{citeindex}%
+  (\usebibmacro{cite})
+}
+{\supercitedelim}
+{}
+
 \lhead{} % 何も記入しない
 \cfoot{} % 何も記入しない
 
@@ -251,7 +272,7 @@ d \left\{ \sum{\frac{1}{2}mk}
 \section{引用文献の書き方}
 
 本文中の引用箇所には，右肩に小括弧をつけて，通し番号を付ける．
-例えば，新宿・渋谷\cite{shinjuku,keer}のようにする．
+例えば，新宿・渋谷\supercite{shinjuku,keer}のようにする．
 引用文献は，本文末尾に番号順にまとめて書く．
 また，日本語の文献を引用する場合は日本語表記とし，英語の文献を引用する場合は英語表記とする．
 
@@ -261,17 +282,6 @@ d \left\{ \sum{\frac{1}{2}mk}
 本テンプレートファイルのスタイルを利用すると，各々の項目の書式が自動的に利用できるので便利である．
 
 
-\begin{thebibliography}{10}
-\bibitem{shinjuku}
-新宿太郎，渋谷二郎，
-``論文の書き方''，
-日本機械学会論文集A編，Vol.~52, No.~485 (1987), pp.~111--116.
-
-\bibitem{keer}
-Keer, L.M., Knapp, W., and Hocken, R., ``Resonance Effects for a
-Crack Near a Free Surface'', Transactions of the ASME, Journal
-of Applied Mechanics, Vol.~51, No.~1 (1986), pp.~65--69.
-
-\end{thebibliography}
+\printbibliography[title=文献]
 
 \end{document}
