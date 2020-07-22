@@ -46,22 +46,29 @@
 \RequirePackage{geometry}
 % \RequirePackage{cite}
 \RequirePackage{caption}
+\RequirePackage{setspace}
 
-\geometry{a4paper, onecolumn, top=26mm, bottom=25mm, left=21mm, right=21mm, headheight=21pt, headsep=0mm, }
+\geometry{a4paper, onecolumn, top=26mm, bottom=32mm, left=21mm, right=21mm, headheight=21pt, headsep=7mm, }
 
-\captionsetup[figure]{name=Fig.~}
-\captionsetup[table]{name=Table~}
-
-
+\captionsetup[figure]{name=Fig.~, labelsep=space}
+\captionsetup[table]{name=Table~, labelsep=space}
 
 \newcommand{\eqjref}[1]{式\eqref{#1}}
 
-\rhead{\footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会
+\pagestyle{fancy}
+\fancyhead[R]{
+  \footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会
 }
-\lfoot{\footnotesize \sffamily [No.20-1]　日本機械学会2020年度年次大会講演論文集 〔2020.9.13-16，名古屋〕}
-
+\fancyfoot[L]{
+  \footnotesize \sffamily [No.20-1]　日本機械学会2020年度年次大会講演論文集 〔2020.9.13-16，名古屋〕
+}
+\fancypagestyle{firstpage}{%
+  \rhead{\footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会}
+}
 
 \renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footrulewidth}{0.5pt}
+
 \renewcommand{\footnoterule}{%
   \kern -3pt
   \hrule width \columnwidth
@@ -83,33 +90,37 @@
     {\LARGE \sf \@pnum \par }
   \end{flushleft}
   \begin{center} %
-    %   \vspace*{5mm} % added for pLaTeX
-            {\Large\bf \@title \par } %
+    \vspace*{-5mm} % added for pLaTeX
+    {\Large\bf \@title \par } %
   \end{center}
+  \begin{spacing}{0.85}
   \begin{center}
-            {\large\bf \@engtitle \par } %
-            {\large \@author \par }  %
-            % \vskip 1em
-            {\large \@engauthor \par } %
-            % \vskip 1em
-            {\normalsize \@affiliation \par } %
+    {\large\bf \@engtitle \par } %
+    {\large \@author \par }  %
+    % \vskip 1em
+    {\large \@engauthor \par } %
+    % \vskip 1em
+    {\normalsize \@affiliation \par } %
   \end{center}
+  \end{spacing}
 
   \@ifundefined{@abstract}{}{%
     \vspace*{0.0mm} % added for pLaTeX
     \vskip 1em
     \@abstract%
-    \gdef\@abstract{}}%
+    \gdef\@abstract{}
+  }%
 
-  %   \vspace*{0.0mm} % added for pLaTeX
-  %   \vspace*{-4.0mm} % added for pLaTeX
+  \vspace*{\baselineskip}
   \@ifundefined{@keyword}{}{%
     {\em \bfseries Key Words: }\@keyword%
     \gdef\@keyword{}}%
   % %   \vspace*{5.0mm} % added for pLaTeX
-    \vspace*{0.0mm} % added for pLaTeX
-     \vskip 2zh}%
- \long\def\abstract#1{\long\gdef\@abstract{#1}
+    \vspace*{\baselineskip} % added for pLaTeX
+    \vskip 2zh
+  }%
+
+  \long\def\abstract#1{\long\gdef\@abstract{#1}
 \vskip 1ex
 }%
 
@@ -139,9 +150,6 @@
     \setlength{\leftmargin}{10pt}%
    }}
   {\end{list}}
-
-\thispagestyle{fancy}
-\pagestyle{empty}
 
 \endinput
 %%
