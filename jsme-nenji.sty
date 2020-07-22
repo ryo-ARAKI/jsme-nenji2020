@@ -52,16 +52,22 @@
 \captionsetup[figure]{name=Fig.~, labelsep=space}
 \captionsetup[table]{name=Table~, labelsep=space}
 
-
-
 \newcommand{\eqjref}[1]{式\eqref{#1}}
 
-\rhead{\footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会
+\pagestyle{fancy}
+\fancyhead[R]{
+  \footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会
 }
-\lfoot{\footnotesize \sffamily [No.20-1]　日本機械学会2020年度年次大会講演論文集 〔2020.9.13-16，名古屋〕}
-
+\fancyfoot[L]{
+  \footnotesize \sffamily [No.20-1]　日本機械学会2020年度年次大会講演論文集 〔2020.9.13-16，名古屋〕
+}
+\fancypagestyle{firstpage}{%
+  \rhead{\footnotesize \sffamily Copyright \copyright 2020　一般社団法人　日本機械学会}
+}
 
 \renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footrulewidth}{0.5pt}
+
 \renewcommand{\footnoterule}{%
   \kern -3pt
   \hrule width \columnwidth
@@ -139,9 +145,6 @@
     \setlength{\leftmargin}{10pt}%
    }}
   {\end{list}}
-
-\thispagestyle{fancy}
-\pagestyle{empty}
 
 \endinput
 %%
