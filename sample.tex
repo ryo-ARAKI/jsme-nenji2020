@@ -6,8 +6,9 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 
-\usepackage[sorting=none,url=false,isbn=false,doi=false]{biblatex}
+\usepackage[sorting=none,url=false,isbn=false,doi=false,eprint=false,giveninits=true]{biblatex}
 \renewbibmacro{in:}{} % in: Some journal の "in:" を取る
+\renewrobustcmd{\mkbibbrackets}{\mkbibparens}
 \addbibresource{./bib_sample.bib}
 
 % \supercite コマンドを(1)のように修正
